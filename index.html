@@ -197,6 +197,13 @@ section[data-view="german-boy"], section[data-view="make-your-bed"], section[dat
 .recognition small { grid-column: 1; color: var(--muted); }
 .recognition a { grid-row: 1 / span 2; grid-column: 2; font: 400 0.8rem/1.2 var(--mono); }
 @media (max-width: 720px) { .art-feature { grid-template-columns: 1fr; } }
+.trip-group { display: grid; gap: 24px; }
+.group-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--faint); }
+.group-head h3 { margin: 0; font: 600 1.9rem/1.1 var(--display); }
+.trips.trips-wide { grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); }
+.trip-card.wide { grid-template-rows: none; grid-template-columns: 200px 1fr; }
+.trip-card.wide img { height: 100%; aspect-ratio: auto; }
+@media (max-width: 780px) { .trips.trips-wide { grid-template-columns: 1fr; } .trip-card.wide { grid-template-columns: 1fr; grid-template-rows: auto 1fr; } .trip-card.wide img { aspect-ratio: 4 / 3; } }
 .credit { font: 400 0.75rem/1.4 var(--mono); color: var(--muted); padding-top: 6px; }
 .press-links { display: flex; gap: 22px; flex-wrap: wrap; padding-top: 4px; }
 .press-links a { font: 600 1rem/1 var(--body); color: var(--accent); text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
@@ -433,47 +440,55 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
       <h2>Travel</h2>
       <p class="muted">Notes from trips, with the stops worth making.</p>
     </div>
+    <div class="trip-group">
+      <div class="group-head"><h3>Central India wildlife</h3><span class="date">3 tiger reserves</span></div>
     <div class="trips">
-      <a class="trip-card" href="#south-korea">
-        <img src="images/ad43868342.jpg" alt="Gangnam Style statue outside the COEX mall in Seoul">
-        <div class="trip-body">
-          <span class="date">15 Jul 2026</span>
-          <h3>South Korea</h3>
-          <p class="muted">A school history trip from the malls of Seoul to the DMZ and the ancient Silla capital of Gyeongju.</p>
-        </div>
-      </a>
-      <a class="trip-card" href="#kerala">
-        <img src="images/928bcba920.jpg" alt="A field of pink water lilies in Kerala">
-        <div class="trip-body">
-          <span class="date">02 Feb 2026</span>
-          <h3>Kerala</h3>
-          <p class="muted">Backwaters and water lilies in Kumarakom, then spice farms, martial arts and honey bees in Thekkady.</p>
-        </div>
-      </a>
       <a class="trip-card" href="#tadoba">
         <img src="images/tadoba-collarwali-1.jpg" alt="Collarwali and her cubs walking through the forest in Tadoba">
         <div class="trip-body">
-          <span class="date">February 2026</span>
-          <h3>Tadoba National Park &amp; Tiger Reserve</h3>
-          <p class="muted">Tigers, a leopard, wild dogs and the teak forests of one of India's best-known tiger reserves.</p>
+          <span class="date">February 2026 · Maharashtra</span>
+          <h3>Tadoba</h3>
+          <p class="muted">Collarwali and her cubs, Yuvraj, a leopard and wild dogs.</p>
         </div>
       </a>
       <a class="trip-card" href="#pench">
-        <img src="images/pench-tiger-1.jpg" alt="Two young tigers resting in the forest in Pench" loading="lazy">
+        <img src="images/pench-tiger-1.jpg" alt="Two young tigers resting in the forest in Pench">
         <div class="trip-body">
-          <span class="date">February 2025</span>
-          <h3>Pench National Park &amp; Tiger Reserve</h3>
-          <p class="muted">The teak and bamboo forests of Madhya Pradesh that inspired The Jungle Book.</p>
+          <span class="date">February 2025 · Madhya Pradesh</span>
+          <h3>Pench</h3>
+          <p class="muted">The Jungle Book forests: young tigers, a leopard and birds.</p>
         </div>
       </a>
       <a class="trip-card" href="#kanha">
-        <img src="images/kanha-tiger-1.jpg" alt="A tiger walking through dry grass in Kanha" loading="lazy">
+        <img src="images/kanha-tiger-1.jpg" alt="A tiger walking through dry grass in Kanha">
         <div class="trip-body">
-          <span class="date">June 2022</span>
-          <h3>Kanha National Park &amp; Tiger Reserve</h3>
-          <p class="muted">Sal forests, wide meadows and the only hard-ground barasingha in the world.</p>
+          <span class="date">June 2022 · Madhya Pradesh</span>
+          <h3>Kanha</h3>
+          <p class="muted">Sal forests, meadows and the hard-ground barasingha.</p>
         </div>
       </a>
+    </div>
+    </div>
+    <div class="trip-group">
+      <div class="group-head"><h3>Trips</h3><span class="date">2 trips</span></div>
+    <div class="trips trips-wide">
+      <a class="trip-card wide" href="#south-korea">
+        <img src="images/ad43868342.jpg" alt="Gangnam Style statue outside the COEX mall in Seoul" loading="lazy">
+        <div class="trip-body">
+          <span class="date">July 2026</span>
+          <h3>South Korea</h3>
+          <p class="muted">A school history trip from Seoul to the DMZ and Gyeongju.</p>
+        </div>
+      </a>
+      <a class="trip-card wide" href="#kerala">
+        <img src="images/928bcba920.jpg" alt="A field of pink water lilies in Kerala" loading="lazy">
+        <div class="trip-body">
+          <span class="date">February 2026</span>
+          <h3>Kerala</h3>
+          <p class="muted">Backwaters, water lilies, spice farms and honey bees.</p>
+        </div>
+      </a>
+    </div>
     </div>
   </section>
 
