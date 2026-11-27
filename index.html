@@ -426,6 +426,14 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
           <p class="muted">Tigers, a leopard, wild dogs and the teak forests of one of India's best-known tiger reserves.</p>
         </div>
       </a>
+      <a class="trip-card" href="#pench">
+        <div class="type-cover"><span>Pench</span><small>Madhya Pradesh · India</small></div>
+        <div class="trip-body">
+          <span class="date">Pench, Madhya Pradesh</span>
+          <h3>Pench National Park &amp; Tiger Reserve</h3>
+          <p class="muted">The teak and bamboo forests of Madhya Pradesh that inspired The Jungle Book.</p>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -614,6 +622,32 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     </article>
   </section>
 
+  <!-- POST: PENCH -->
+  <section data-view="pench" hidden>
+    <article class="post">
+      <a class="back" href="#travel">← travel</a>
+      <header class="post-head">
+        <span class="date">Ridhaan Desai</span>
+        <h2>Pench National Park &amp; Tiger Reserve</h2>
+        <p class="standfirst">The teak and bamboo forests of Madhya Pradesh that inspired The Jungle Book.</p>
+      </header>
+      <dl class="trip-facts">
+        <div><dt>Where</dt><dd>Pench Tiger Reserve, Seoni and Chhindwara districts, Madhya Pradesh, India</dd></div>
+        <div><dt>Trip</dt><dd>Wildlife safari</dd></div>
+        <div><dt>Known for</dt><dd>Tigers, The Jungle Book, the tigress Collarwali</dd></div>
+        <div><dt>Good for</dt><dd>Wildlife lovers and Jungle Book fans</dd></div>
+      </dl>
+
+      <div class="prose-post">
+        <p>Pench Tiger Reserve sits on the southern slopes of the Satpura hills in Madhya Pradesh, spread across the Seoni and Chhindwara districts, right next to the Maharashtra border. The park is named after the Pench River, which flows from north to south through the middle of the forest and splits it into two halves. Near the southern edge, the Meghdoot dam at Totladoh holds back the river and forms a huge lake. The forest is a mix of dry and moist deciduous trees, with teak, bamboo and open meadows, and safaris enter through the Turia, Karmajhiri and Jamtara gates.</p>
+        <p>Pench is famous for another reason too: it is the area Rudyard Kipling wrote about in The Jungle Book, even though he never visited it himself. The Seoni hills, the Wainganga River and the valley where Sher Khan meets his end are real places in this district, and part of the reserve is even called the Pench Mowgli Sanctuary. Pench became a national park in 1983 and a tiger reserve in 1992. Along with tigers, the forest is home to leopards, wild dogs, sloth bears, gaur, sambar, chital and nilgai, and more than 325 species of birds. I would recommend Pench to anyone who loves wildlife, and especially to anyone who grew up with The Jungle Book.</p>
+
+        <h3>Pench's Most Famous Tigress</h3>
+        <p>Pench was home to Collarwali, one of the most famous tigresses in India, and not the same Collarwali I saw in Tadoba. She got her name because she was the first tiger in Pench to be fitted with a radio collar. Between 2008 and 2018, she gave birth to 29 cubs in eight litters, which earned her the nickname "Supermom." She died in January 2022 at around 17 years old, and many of the tigers in Pench today come from her family.</p>
+      </div>
+    </article>
+  </section>
+
   <!-- READING -->
   <section data-view="reading" hidden>
     <div class="intro">
@@ -709,7 +743,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
 (function () {
   var views = Array.prototype.slice.call(document.querySelectorAll('section[data-view]'));
   var tabs = Array.prototype.slice.call(document.querySelectorAll('nav a'));
-  var parent = { 'south-korea': 'travel', 'kerala': 'travel', 'tadoba': 'travel', 'german-boy': 'reading', 'make-your-bed': 'reading', 'the-martian': 'reading', 'tech-challenge': 'research' };
+  var parent = { 'south-korea': 'travel', 'kerala': 'travel', 'tadoba': 'travel', 'pench': 'travel', 'german-boy': 'reading', 'make-your-bed': 'reading', 'the-martian': 'reading', 'tech-challenge': 'research' };
   function show() {
     var id = (location.hash || '#home').slice(1);
     if (!views.some(function (v) { return v.dataset.view === id; })) id = 'home';
