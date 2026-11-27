@@ -434,6 +434,14 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
           <p class="muted">The teak and bamboo forests of Madhya Pradesh that inspired The Jungle Book.</p>
         </div>
       </a>
+      <a class="trip-card" href="#kanha">
+        <div class="type-cover"><span>Kanha</span><small>Madhya Pradesh · India</small></div>
+        <div class="trip-body">
+          <span class="date">Kanha, Madhya Pradesh</span>
+          <h3>Kanha National Park &amp; Tiger Reserve</h3>
+          <p class="muted">Sal forests, wide meadows and the only hard-ground barasingha in the world.</p>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -668,6 +676,32 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     </article>
   </section>
 
+  <!-- POST: KANHA -->
+  <section data-view="kanha" hidden>
+    <article class="post">
+      <a class="back" href="#travel">← travel</a>
+      <header class="post-head">
+        <span class="date">Ridhaan Desai</span>
+        <h2>Kanha National Park &amp; Tiger Reserve</h2>
+        <p class="standfirst">Sal forests, wide meadows and the only hard-ground barasingha in the world.</p>
+      </header>
+      <dl class="trip-facts">
+        <div><dt>Where</dt><dd>Kanha Tiger Reserve, Mandla and Balaghat districts, Madhya Pradesh, India</dd></div>
+        <div><dt>Trip</dt><dd>Wildlife safari</dd></div>
+        <div><dt>Known for</dt><dd>Tigers, the hard-ground barasingha, sal forests and meadows</dd></div>
+        <div><dt>Good for</dt><dd>Wildlife lovers and photographers</dd></div>
+      </dl>
+
+      <div class="prose-post">
+        <p>Kanha Tiger Reserve is in the Maikal hills of the Satpura range, in the Mandla and Balaghat districts of Madhya Pradesh. It is the largest national park in the state. Most of the forest is made up of tall sal trees, mixed with bamboo and wide open grasslands called meadows, which are the best places to spot deer and the animals that hunt them. Safaris in the core of the park run through four zones: Kanha, Kisli, Mukki and Sarhi.</p>
+        <p>Kanha was first protected as a sanctuary in 1933, became a national park in 1955, and was one of the first tiger reserves in India when Project Tiger started in 1973. Like Pench, it is often linked to The Jungle Book, even though Rudyard Kipling never actually came here. The park is home to about 43 species of mammals and around 300 species of birds, including tigers, leopards, wild dogs, sloth bears, gaur and Indian pythons. I would recommend Kanha to anyone who wants to see a real Central Indian jungle, and especially to anyone who wants to see a barasingha.</p>
+
+        <h3>The Hard-Ground Barasingha</h3>
+        <p>Kanha is the only place in the world where the hard-ground barasingha, also called the swamp deer, lives in the wild. It is the state animal of Madhya Pradesh. Unlike the other kinds of barasingha in India, which live in marshy areas, this one has hard hooves that are made for firm ground in sal forests with grass underneath. By 1970, only 66 were left in Kanha. The park saved them by restoring grasslands and swamps, keeping cattle out to stop the spread of disease, and protecting the herds, and today there are more than a thousand. Some have even been moved to other parks, like Satpura, Van Vihar and Bandhavgarh, to start new herds. In 2017, Kanha became the first tiger reserve in India to get an official mascot: Bhoorsingh the Barasingha.</p>
+      </div>
+    </article>
+  </section>
+
   <!-- READING -->
   <section data-view="reading" hidden>
     <div class="intro">
@@ -763,7 +797,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
 (function () {
   var views = Array.prototype.slice.call(document.querySelectorAll('section[data-view]'));
   var tabs = Array.prototype.slice.call(document.querySelectorAll('nav a'));
-  var parent = { 'south-korea': 'travel', 'kerala': 'travel', 'tadoba': 'travel', 'pench': 'travel', 'german-boy': 'reading', 'make-your-bed': 'reading', 'the-martian': 'reading', 'tech-challenge': 'research' };
+  var parent = { 'south-korea': 'travel', 'kerala': 'travel', 'tadoba': 'travel', 'pench': 'travel', 'kanha': 'travel', 'german-boy': 'reading', 'make-your-bed': 'reading', 'the-martian': 'reading', 'tech-challenge': 'research' };
   function show() {
     var id = (location.hash || '#home').slice(1);
     if (!views.some(function (v) { return v.dataset.view === id; })) id = 'home';
