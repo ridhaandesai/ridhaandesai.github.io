@@ -180,6 +180,11 @@ section[data-view="german-boy"], section[data-view="make-your-bed"], section[dat
 .trip-facts div { padding: 16px 20px; display: grid; gap: 4px; align-content: start; border-right: 1px solid var(--faint); border-bottom: 1px solid var(--faint); margin: 0 -1px -1px 0; }
 .trip-facts dt { font: 400 0.75rem/1.2 var(--mono); color: var(--muted); }
 .trip-facts dd { margin: 0; font-size: 1.05rem; line-height: 1.45; }
+.trip-card .type-cover { aspect-ratio: 4 / 3; min-height: 0; }
+.tiger-list { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
+.tiger-list li { display: grid; gap: 4px; padding: 18px 20px; border: 1px solid var(--faint); border-radius: 12px; background: var(--tint); }
+.tiger-list h4 { margin: 0; font: 600 1.3rem/1.2 var(--display); }
+.tiger-list p { margin: 0; color: var(--muted); line-height: 1.6; }
 .credit { font: 400 0.75rem/1.4 var(--mono); color: var(--muted); padding-top: 6px; }
 .press-links { display: flex; gap: 22px; flex-wrap: wrap; padding-top: 4px; }
 .press-links a { font: 600 1rem/1 var(--body); color: var(--accent); text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
@@ -413,6 +418,14 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
           <p class="muted">Backwaters and water lilies in Kumarakom, then spice farms, martial arts and honey bees in Thekkady.</p>
         </div>
       </a>
+      <a class="trip-card" href="#tadoba">
+        <div class="type-cover"><span>Tadoba</span><small>Maharashtra · India</small></div>
+        <div class="trip-body">
+          <span class="date">Tadoba, Maharashtra</span>
+          <h3>Tadoba National Park &amp; Tiger Reserve</h3>
+          <p class="muted">Tigers, a leopard and the teak forests of one of India's best-known tiger reserves.</p>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -543,6 +556,52 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     </article>
   </section>
 
+  <!-- POST: TADOBA -->
+  <section data-view="tadoba" hidden>
+    <article class="post">
+      <a class="back" href="#travel">← travel</a>
+      <header class="post-head">
+        <span class="date">Ridhaan Desai</span>
+        <h2>Tadoba National Park &amp; Tiger Reserve</h2>
+        <p class="standfirst">Tigers, a leopard and the teak forests of one of India's best-known tiger reserves.</p>
+      </header>
+      <dl class="trip-facts">
+        <div><dt>Where</dt><dd>Tadoba-Andhari Tiger Reserve, Chandrapur district, Maharashtra, India</dd></div>
+        <div><dt>Trip</dt><dd>Wildlife safari</dd></div>
+        <div><dt>Highlights</dt><dd>Collarwali and her cubs, Yuvraj, a leopard</dd></div>
+        <div><dt>Good for</dt><dd>Anyone who loves wildlife</dd></div>
+      </dl>
+
+      <div class="prose-post">
+        <p>Tadoba-Andhari Tiger Reserve is in the Chandrapur district of Maharashtra, and it is one of the best places in India to see a tiger in the wild. The forest is dry and deciduous, made up mostly of teak, with bamboo thickets and open meadows around lakes. The park gets its name from Taru, a Gond chief who, according to local legend, was killed by a tiger, and the Gond people still worship him today. The reserve is divided into a core zone, which is the heart of the park, and a buffer zone that surrounds it, and safaris enter through different gates around the forest.</p>
+        <p>What makes Tadoba special is how many tigers live there. Because so many tigers share the same forest, the males often compete for territory, and the guides know almost every tiger by its name and family. On my safaris, I saw more tigers than I ever expected, and each one had its own story. Between the tiger sightings, the meadows were full of spotted deer, sambar and wild boar, so there was always something to watch. I would recommend Tadoba to anyone who loves wildlife and wants to see tigers in their natural home.</p>
+
+        <h3>The Tigers I Saw</h3>
+        <ul class="tiger-list">
+          <li>
+            <h4>Collarwali and her cubs</h4>
+            <p>Not to be confused with the famous Collarwali of Pench, this Collarwali is a tigress of Tadoba's buffer zone around Moharli. Her name comes from a radio collar she wore during an earlier study. When I saw her, she had her cubs with her.</p>
+          </li>
+          <li>
+            <h4>Yuvraj</h4>
+            <p>A male tiger of Tadoba's core zone, and one of the tigers visitors most hope to see.</p>
+          </li>
+          <li>
+            <h4>Bijli's son</h4>
+            <p>A young male who is still too young to have his own name. His mother, Bijli, is a tigress whose territory is around Jamni Lake in the core zone.</p>
+          </li>
+          <li>
+            <h4>An unnamed male</h4>
+            <p>Another male tiger whose name I don't know.</p>
+          </li>
+        </ul>
+
+        <h3>The Leopard</h3>
+        <p>Tadoba isn't only about tigers. Leopards live here too, and the core and buffer areas are estimated to be home to about 151 of them. Leopards are shy and usually stay hidden in the trees and bushes, so seeing one is a lucky moment. Tadoba has even had sightings of rare black leopards in recent years.</p>
+      </div>
+    </article>
+  </section>
+
   <!-- READING -->
   <section data-view="reading" hidden>
     <div class="intro">
@@ -638,7 +697,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
 (function () {
   var views = Array.prototype.slice.call(document.querySelectorAll('section[data-view]'));
   var tabs = Array.prototype.slice.call(document.querySelectorAll('nav a'));
-  var parent = { 'south-korea': 'travel', 'kerala': 'travel', 'german-boy': 'reading', 'make-your-bed': 'reading', 'the-martian': 'reading', 'tech-challenge': 'research' };
+  var parent = { 'south-korea': 'travel', 'kerala': 'travel', 'tadoba': 'travel', 'german-boy': 'reading', 'make-your-bed': 'reading', 'the-martian': 'reading', 'tech-challenge': 'research' };
   function show() {
     var id = (location.hash || '#home').slice(1);
     if (!views.some(function (v) { return v.dataset.view === id; })) id = 'home';
