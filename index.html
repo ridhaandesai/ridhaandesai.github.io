@@ -204,6 +204,26 @@ section[data-view="german-boy"], section[data-view="make-your-bed"], section[dat
 .trip-card.wide { grid-template-rows: none; grid-template-columns: 200px 1fr; }
 .trip-card.wide img { height: 100%; aspect-ratio: auto; }
 @media (max-width: 780px) { .trips.trips-wide { grid-template-columns: 1fr; } .trip-card.wide { grid-template-columns: 1fr; grid-template-rows: auto 1fr; } .trip-card.wide img { aspect-ratio: 4 / 3; } }
+.jumps { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.jumps button { padding: 9px 16px; border: 1px solid var(--faint); border-radius: 999px; background: none; cursor: pointer; font: 400 0.8rem/1 var(--mono); color: inherit; }
+.jumps button:hover { border-color: var(--accent); color: var(--accent); }
+.work[id] { scroll-margin-top: 96px; }
+.featured { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.feat-card { border: 1px solid var(--faint); border-radius: 14px; overflow: hidden; background: var(--tint); display: grid; grid-template-rows: auto 1fr; }
+.feat-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+.feat-card img.top { object-position: top; }
+.feat-body { padding: 22px 24px 26px; display: grid; gap: 8px; align-content: start; }
+.feat-body h4 { margin: 0; font: 600 1.6rem/1.15 var(--display); }
+.feat-body p { margin: 0; }
+.feat-body summary { cursor: pointer; font: 400 0.8rem/1.4 var(--mono); color: var(--accent); }
+.feat-body blockquote { margin: 12px 0 0; padding-left: 16px; border-left: 2px solid var(--accent); font-style: italic; line-height: 1.6; }
+.gallery.captioned { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+.gallery.captioned button { font: inherit; aspect-ratio: auto; background: none; border-radius: 0; overflow: visible; display: grid; gap: 8px; text-align: left; color: inherit; }
+.gallery.captioned img { aspect-ratio: 1 / 1; height: auto; border-radius: 8px; }
+.gallery.captioned button:hover img { transform: none; opacity: .88; }
+.gallery .cap { font-family: inherit; font-size: 0.95rem; line-height: 1.35; color: var(--muted); }
+.gallery.captioned.collapsed button:nth-child(n+6) { display: none; }
+@media (max-width: 780px) { .featured { grid-template-columns: 1fr; } .gallery.captioned { grid-template-columns: repeat(2, minmax(0, 1fr)); } .gallery.captioned.collapsed button:nth-child(n+6) { display: grid; } .gallery.captioned.collapsed button:nth-child(n+7) { display: none; } }
 .credit { font: 400 0.75rem/1.4 var(--mono); color: var(--muted); padding-top: 6px; }
 .press-links { display: flex; gap: 22px; flex-wrap: wrap; padding-top: 4px; }
 .press-links a { font: 600 1rem/1 var(--body); color: var(--accent); text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
@@ -339,37 +359,51 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     <div class="intro">
       <span class="kicker">creations</span>
       <h2>Things I've made</h2>
-      <p class="muted">Engineering, art, origami and food, plus the work I do for the environment.</p>
+      <p class="muted">Art, origami and food, plus the work I do for the environment.</p>
+      <div class="jumps"><button type="button" data-jump="featured">Featured</button><button type="button" data-jump="art-studio">Art Studio</button><button type="button" data-jump="origami">Origami &amp; Paper</button><button type="button" data-jump="kitchen">Kitchen</button><button type="button" data-jump="climate-action">Climate Action</button></div>
     </div>
     <div class="works">
-      <div class="work">
-        <div class="work-head"><span class="date">Climate Action</span><h3>Tikkun Olam</h3><p class="muted">My effort to repair the world: cutting water waste and pollution, and planting trees with Our City Forest.</p></div>
-        <div class="gallery"><button type="button"><img src="images/09d03a8a79.jpg" alt="MLK Day tree planting with Our City Forest" width="600" height="600" loading="lazy"></button><button type="button"><img src="images/46259a37f1.jpg" alt="Volunteering at Our City Forest" width="448" height="600" loading="lazy"></button></div>
+      <div class="work" id="featured">
+        <div class="work-head"><span class="date">Featured</span></div>
+        <div class="featured">
+          <article class="feat-card">
+            <img src="images/54454d3c64.jpg" alt="Corona Circus, my heart design for Hearts in San Francisco" loading="lazy">
+            <div class="feat-body">
+              <span class="date">Hearts in San Francisco</span>
+              <h4>Corona Circus</h4>
+              <p class="muted">My heart design for the Hearts in San Francisco fundraiser for San Francisco General Hospital. I was the youngest artist chosen.</p>
+              <a class="read-on" href="#news">Watch the KTVU story →</a>
+            </div>
+          </article>
+          <article class="feat-card" id="corona-painting">
+            <img class="top" src="images/art-corona-2020.jpg" alt="Ridhaan's Grade 1 painting of the coronavirus, the world, and his family at home behind a locked gate, dated 24/4/2020" loading="lazy">
+            <div class="feat-body">
+              <span class="date">Painting · Grade 1 · April 2020</span>
+              <h4>Corona Virus Can't Reach My Home</h4>
+              <p class="muted">Selected by the International Museum of Children's Art in Oslo, Norway, and by ICCR (Indian Council for Cultural Relations), India.</p>
+              <details><summary>Read what I wrote about my painting</summary><blockquote>“Corona virus is traveling from different countries to India by airplane. It cannot reach to my locked caged home because all the protectors like PM Modi, doctors, police, scientists and workers are fighting with the virus with their weapons like leadership, vaccine, stick and sweeper. I am very happy to spend more time with my family. I also feel happy for the birds and animals being free in nature. I have my school classes and play dates online. At home, I read books, write stories, play Lego, paint, exercise, enjoy music, dance and movies. I cannot go to my favorite places like my school, my friends’ house, playground, nature walks, family trips, and game zone. I really wish Corona Virus goes away soon and I can play like before.”</blockquote></details>
+            </div>
+          </article>
+        </div>
       </div>
-      <div class="work">
-        <div class="work-head"><span class="date">Art</span><h3>Art Studio</h3><p class="muted">Drawings, paintings and sculpture, including two hearts for Hearts in San Francisco.</p></div>
-        <div class="gallery collapsed"><button type="button"><img src="images/4e63391ed3.jpg" alt="Painted hearts and drawings" width="600" height="600" loading="lazy"></button><button type="button"><img src="images/9260d1586b.jpg" alt="Painted clay pots" width="800" height="228" loading="lazy"></button><button type="button"><img src="images/54454d3c64.jpg" alt="Corona Circus, featured by Hearts in San Francisco" width="276" height="600" loading="lazy"></button><button type="button"><img src="images/25fe295a1a.jpg" alt="Leaf-print painting" width="450" height="600" loading="lazy"></button><button type="button"><img src="images/7091d50ae1.jpg" alt="Painted frame" width="450" height="600" loading="lazy"></button><button type="button"><img src="images/9020e50e95.jpg" alt="Minecraft poster" width="800" height="600" loading="lazy"></button><button type="button"><img src="images/b16b3fc932.jpg" alt="Buddha drawing" width="424" height="600" loading="lazy"></button><button type="button"><img src="images/f1bc6d0d1e.jpg" alt="Lion drawing" width="450" height="600" loading="lazy"></button><button type="button"><img src="images/3106588bb7.jpg" alt="Giraffe drawing" width="450" height="600" loading="lazy"></button><button type="button"><img src="images/963d260e60.jpg" alt="Landscape drawing" width="728" height="600" loading="lazy"></button><button type="button"><img src="images/4f5f3ce6a7.jpg" alt="Say Treees heart for Hearts in San Francisco" width="520" height="600" loading="lazy"></button><button type="button"><img src="images/f4a86e691e.jpg" alt="Starry night with a diya" width="450" height="600" loading="lazy"></button><button type="button"><img src="images/203781fa19.jpg" alt="Go Away Corona" width="794" height="600" loading="lazy"></button><button type="button"><img src="images/2bbe955e73.jpg" alt="Life in lockdown" width="434" height="600" loading="lazy"></button><button type="button"><img src="images/88a43bc6ed.jpg" alt="Madhubani-style Ganesha" width="444" height="600" loading="lazy"></button></div>
+      <div class="work" id="art-studio">
+        <div class="work-head"><span class="date">Art</span><h3>Art Studio</h3><p class="muted">I have been drawing and painting for as long as I can remember. I have tried pencil drawings, painted clay pots, leaf prints and Madhubani-style art, and two of my heart designs, Corona Circus and Say Treees, were made for Hearts in San Francisco.</p></div>
+        <div class="gallery captioned collapsed"><button type="button"><img src="images/4e63391ed3.jpg" alt="Painted hearts and drawings" width="600" height="600" loading="lazy"><span class="cap">Painted hearts and drawings</span></button><button type="button"><img src="images/9260d1586b.jpg" alt="Painted clay pots" width="800" height="228" loading="lazy"><span class="cap">Painted clay pots</span></button><button type="button"><img src="images/54454d3c64.jpg" alt="Corona Circus, featured by Hearts in San Francisco" width="276" height="600" loading="lazy"><span class="cap">Corona Circus, featured by Hearts in San Francisco</span></button><button type="button"><img src="images/25fe295a1a.jpg" alt="Leaf-print painting" width="450" height="600" loading="lazy"><span class="cap">Leaf-print painting</span></button><button type="button"><img src="images/7091d50ae1.jpg" alt="Painted frame" width="450" height="600" loading="lazy"><span class="cap">Painted frame</span></button><button type="button"><img src="images/9020e50e95.jpg" alt="Minecraft poster" width="800" height="600" loading="lazy"><span class="cap">Minecraft poster</span></button><button type="button"><img src="images/b16b3fc932.jpg" alt="Buddha drawing" width="424" height="600" loading="lazy"><span class="cap">Buddha drawing</span></button><button type="button"><img src="images/f1bc6d0d1e.jpg" alt="Lion drawing" width="450" height="600" loading="lazy"><span class="cap">Lion drawing</span></button><button type="button"><img src="images/3106588bb7.jpg" alt="Giraffe drawing" width="450" height="600" loading="lazy"><span class="cap">Giraffe drawing</span></button><button type="button"><img src="images/963d260e60.jpg" alt="Landscape drawing" width="728" height="600" loading="lazy"><span class="cap">Landscape drawing</span></button><button type="button"><img src="images/4f5f3ce6a7.jpg" alt="Say Treees heart for Hearts in San Francisco" width="520" height="600" loading="lazy"><span class="cap">Say Treees heart for Hearts in San Francisco</span></button><button type="button"><img src="images/f4a86e691e.jpg" alt="Starry night with a diya" width="450" height="600" loading="lazy"><span class="cap">Starry night with a diya</span></button><button type="button"><img src="images/203781fa19.jpg" alt="Go Away Corona" width="794" height="600" loading="lazy"><span class="cap">Go Away Corona</span></button><button type="button"><img src="images/2bbe955e73.jpg" alt="Life in lockdown" width="434" height="600" loading="lazy"><span class="cap">Life in lockdown</span></button><button type="button"><img src="images/88a43bc6ed.jpg" alt="Madhubani-style Ganesha" width="444" height="600" loading="lazy"><span class="cap">Madhubani-style Ganesha</span></button></div>
         <button class="more" type="button" data-label="Show all 15 photos">Show all 15 photos</button>
       </div>
-      <div class="work">
-        <div class="work-head"><span class="date">Paper</span><h3>Origami &amp; Paper</h3><p class="muted">Folded bookmarks, cards and paper projects.</p></div>
-        <div class="gallery"><button type="button"><img src="images/2ed85c794c.jpg" alt="Origami corner bookmarks" width="724" height="600" loading="lazy"></button><button type="button"><img src="images/79142d6c70.jpg" alt="Joke card" width="428" height="600" loading="lazy"></button><button type="button"><img src="images/00f5612f5a.jpg" alt="Thank-you card for my teachers" width="450" height="600" loading="lazy"></button><button type="button"><img src="images/c637f14ed8.jpg" alt="Family tree" width="800" height="552" loading="lazy"></button></div>
+      <div class="work" id="origami">
+        <div class="work-head"><span class="date">Paper</span><h3>Origami &amp; Paper</h3><p class="muted">I like folding and making things out of paper, from origami corner bookmarks to a joke card, a family tree and a thank-you card for my teachers.</p></div>
+        <div class="gallery captioned"><button type="button"><img src="images/2ed85c794c.jpg" alt="Origami corner bookmarks" width="724" height="600" loading="lazy"><span class="cap">Origami corner bookmarks</span></button><button type="button"><img src="images/79142d6c70.jpg" alt="Joke card" width="428" height="600" loading="lazy"><span class="cap">Joke card</span></button><button type="button"><img src="images/00f5612f5a.jpg" alt="Thank-you card for my teachers" width="450" height="600" loading="lazy"><span class="cap">Thank-you card for my teachers</span></button><button type="button"><img src="images/c637f14ed8.jpg" alt="Family tree" width="800" height="552" loading="lazy"><span class="cap">Family tree</span></button></div>
       </div>
-      <div class="work">
-        <div class="work-head"><span class="date">Food</span><h3>Kitchen</h3><p class="muted">Recent cooking and baking projects.</p></div>
-        <div class="gallery"><button type="button"><img src="images/2a96e61311.jpg" alt="Fruit chess set" width="800" height="600" loading="lazy"></button><button type="button"><img src="images/90fa80d270.jpg" alt="Homemade pizza" width="800" height="450" loading="lazy"></button><button type="button"><img src="images/f5a6a9b5e1.jpg" alt="Date and nut bites" width="518" height="600" loading="lazy"></button><button type="button"><img src="images/68a9a13303.jpg" alt="Chocolate cake" width="718" height="600" loading="lazy"></button><button type="button"><img src="images/4618883910.jpg" alt="Fruit face plate" width="450" height="600" loading="lazy"></button><button type="button"><img src="images/ddc86a9d3d.jpg" alt="Homemade popsicles" width="450" height="600" loading="lazy"></button></div>
+      <div class="work" id="kitchen">
+        <div class="work-head"><span class="date">Food</span><h3>Kitchen</h3><p class="muted">Cooking is where my knife skills come from. I like making food that looks fun as well as tastes good, like a fruit chess set and a fruit face plate, along with homemade pizza, date and nut bites, chocolate cake and popsicles.</p></div>
+        <div class="gallery captioned collapsed"><button type="button"><img src="images/2a96e61311.jpg" alt="Fruit chess set" width="800" height="600" loading="lazy"><span class="cap">Fruit chess set</span></button><button type="button"><img src="images/90fa80d270.jpg" alt="Homemade pizza" width="800" height="450" loading="lazy"><span class="cap">Homemade pizza</span></button><button type="button"><img src="images/f5a6a9b5e1.jpg" alt="Date and nut bites" width="518" height="600" loading="lazy"><span class="cap">Date and nut bites</span></button><button type="button"><img src="images/68a9a13303.jpg" alt="Chocolate cake" width="718" height="600" loading="lazy"><span class="cap">Chocolate cake</span></button><button type="button"><img src="images/4618883910.jpg" alt="Fruit face plate" width="450" height="600" loading="lazy"><span class="cap">Fruit face plate</span></button><button type="button"><img src="images/ddc86a9d3d.jpg" alt="Homemade popsicles" width="450" height="600" loading="lazy"><span class="cap">Homemade popsicles</span></button></div>
+        <button class="more" type="button" data-label="Show all 6 photos">Show all 6 photos</button>
       </div>
-      <div class="work">
-        <div class="art-feature" id="corona-painting">
-          <figure class="art-img"><img src="images/art-corona-2020.jpg" alt="Ridhaan's Grade 1 painting of the coronavirus, the world, and his family at home behind a locked gate, dated 24/4/2020" loading="lazy"></figure>
-          <div>
-            <span class="date">Painting · Grade 1 · April 2020</span>
-            <h4>Corona Virus Can't Reach My Home</h4>
-            <p class="muted">Selected by the International Museum of Children's Art in Oslo, Norway, and by ICCR (Indian Council for Cultural Relations), India.</p>
-            <span class="quote-label">What I wrote about my painting</span>
-            <blockquote>“Corona virus is traveling from different countries to India by airplane. It cannot reach to my locked caged home because all the protectors like PM Modi, doctors, police, scientists and workers are fighting with the virus with their weapons like leadership, vaccine, stick and sweeper. I am very happy to spend more time with my family. I also feel happy for the birds and animals being free in nature. I have my school classes and play dates online. At home, I read books, write stories, play Lego, paint, exercise, enjoy music, dance and movies. I cannot go to my favorite places like my school, my friends’ house, playground, nature walks, family trips, and game zone. I really wish Corona Virus goes away soon and I can play like before.”</blockquote>
-          </div>
-        </div>
+      <div class="work" id="climate-action">
+        <div class="work-head"><span class="date">Climate Action</span><h3>Tikkun Olam</h3><p class="muted">My effort to repair the world: cutting water waste and pollution, and planting trees with Our City Forest. I also volunteer with Lawnbusters, which swaps thirsty lawns for drought-tolerant gardens.</p></div>
+        <div class="gallery captioned"><button type="button"><img src="images/09d03a8a79.jpg" alt="MLK Day tree planting with Our City Forest" width="600" height="600" loading="lazy"><span class="cap">MLK Day tree planting with Our City Forest</span></button><button type="button"><img src="images/46259a37f1.jpg" alt="Volunteering at Our City Forest" width="448" height="600" loading="lazy"><span class="cap">Volunteering at Our City Forest</span></button></div>
+        <a class="read-on" href="#news">See the CBS Lawnbusters story →</a>
       </div>
     </div>
   </section>
@@ -876,6 +910,11 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
   }
   window.addEventListener('hashchange', show);
   show();
+
+  // Jump links on Creations
+  Array.prototype.forEach.call(document.querySelectorAll('[data-jump]'), function (b) {
+    b.addEventListener('click', function () { var t = document.getElementById(b.dataset.jump); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+  });
 
   // "Show all" buttons
   Array.prototype.forEach.call(document.querySelectorAll('.more'), function (b) {
