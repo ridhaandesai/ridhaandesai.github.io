@@ -176,6 +176,10 @@ section[data-view="german-boy"], section[data-view="make-your-bed"], section[dat
 .reveal[open] .reveal-hint { font-size: 0; }
 .reveal[open] .reveal-hint::after { content: "Show less −"; font-size: 0.8rem; }
 .reveal-body { display: grid; gap: 14px; padding-top: 16px; }
+.trip-facts { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0; border: 1px solid var(--faint); border-radius: 12px; overflow: hidden; background: var(--tint); }
+.trip-facts div { padding: 16px 20px; display: grid; gap: 4px; align-content: start; border-right: 1px solid var(--faint); border-bottom: 1px solid var(--faint); margin: 0 -1px -1px 0; }
+.trip-facts dt { font: 400 0.75rem/1.2 var(--mono); color: var(--muted); }
+.trip-facts dd { margin: 0; font-size: 1.05rem; line-height: 1.45; }
 .credit { font: 400 0.75rem/1.4 var(--mono); color: var(--muted); padding-top: 6px; }
 .press-links { display: flex; gap: 22px; flex-wrap: wrap; padding-top: 4px; }
 .press-links a { font: 600 1rem/1 var(--body); color: var(--accent); text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
@@ -421,6 +425,12 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
         <h2>South Korea</h2>
         <p class="standfirst">A school history trip from the malls of Seoul to the DMZ and the ancient Silla capital of Gyeongju.</p>
       </header>
+      <dl class="trip-facts">
+        <div><dt>Where</dt><dd>Seoul, the DMZ and Gyeongju, South Korea</dd></div>
+        <div><dt>Trip</dt><dd>School history trip</dd></div>
+        <div><dt>Highlights</dt><dd>Gyeongbokgung Palace in hanbok, the DMZ's 3rd tunnel, Bulguksa Temple</dd></div>
+        <div><dt>Food to try</dt><dd>Hot pot</dd></div>
+      </dl>
       <figure class="cover"><img src="images/ad43868342.jpg" alt="Gangnam Style statue outside the COEX mall in Seoul"></figure>
 
       <div class="prose-post">
@@ -483,6 +493,12 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
         <h2>Kerala</h2>
         <p class="standfirst">Backwaters and water lilies in Kumarakom, then spice farms, martial arts and honey bees in Thekkady.</p>
       </header>
+      <dl class="trip-facts">
+        <div><dt>Where</dt><dd>Kumarakom and Thekkady, Kerala, India</dd></div>
+        <div><dt>Stayed at</dt><dd>Gokulam Grand Resort, Spice Village CGH Earth</dd></div>
+        <div><dt>Highlights</dt><dd>Shikara boat ride, the water lily field, Kathakali, the honey bee farm</dd></div>
+        <div><dt>Good for</dt><dd>Families and solo travelers</dd></div>
+      </dl>
       <figure class="cover"><img src="images/928bcba920.jpg" alt="A field of pink water lilies in Kerala"></figure>
 
       <div class="prose-post">
