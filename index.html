@@ -1,0 +1,674 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>RidhaanDesai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=EB+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Mono:wght@400&display=swap">
+<style>
+/* Layout: white page, one generous column; home pairs an intro with a portrait frame; every list is a dated ledger. */
+:root, :root[data-theme="dark"] {
+  --bg: #ffffff;
+  --ink: #1a1a1a;
+  --muted: #6f6b66;
+  --faint: #ebe8e4;
+  --accent: #2b4a73;
+  --tint: #f5f3f0;
+  --display: "Cormorant Garamond", Garamond, Georgia, serif;
+  --body: "EB Garamond", Garamond, Georgia, serif;
+  --mono: "DM Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { background: #ffffff; }
+body { background: var(--bg); color: var(--ink); font: 500 1.2rem/1.75 var(--body); }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+.wrap { max-width: 1000px; margin: 0 auto; padding-inline: 28px; }
+.narrow { max-width: 680px; }
+
+/* Header */
+header.site-top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--faint);
+}
+.bar { display: flex; justify-content: space-between; align-items: center; gap: 12px 28px; flex-wrap: wrap; padding-block: 20px; }
+.brand { font: 600 1.5rem/1 var(--display); letter-spacing: 0.03em; text-decoration: none; }
+nav { display: flex; gap: 6px 22px; flex-wrap: wrap; }
+nav a { text-decoration: none; color: var(--muted); font-size: 1.05rem; letter-spacing: 0.01em; }
+nav a:hover, nav a[aria-current="page"] { color: var(--ink); }
+nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 7px; text-decoration-thickness: 1px; }
+
+main { padding-block: 130px 170px; }
+section[data-view] { display: grid; gap: 96px; }
+
+h1, h2, h3 { margin: 0; font-family: var(--display); font-weight: 500; text-wrap: balance; }
+h1 { font-size: clamp(3rem, 8vw, 5rem); line-height: 1.02; letter-spacing: -0.005em; }
+h1 .first { color: var(--accent); font-style: italic; }
+h2 { font-size: clamp(2.4rem, 6vw, 3.4rem); line-height: 1.1; }
+h3 { font-size: 1.65rem; line-height: 1.25; font-weight: 600; }
+p { margin: 0; }
+.muted { color: var(--muted); }
+.kicker { font: 400 0.85rem/1 var(--mono); color: var(--accent); letter-spacing: 0.02em; }
+.date { font: 400 0.82rem/1.9 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.intro { display: grid; gap: 22px; max-width: 640px; }
+
+/* Home hero */
+.hero { display: grid; grid-template-columns: 1.35fr 1fr; gap: 64px; align-items: center; }
+.hero > * { min-width: 0; }
+.hero-text { display: grid; gap: 26px; }
+.hero-text p { max-width: 54ch; }
+.portrait {
+  aspect-ratio: 4 / 5; max-width: 340px; width: 100%; justify-self: end;
+  border-radius: 18px; background: var(--tint); border: 1px solid var(--faint);
+  display: grid; place-items: center; text-align: center;
+  box-shadow: 0 30px 60px -30px rgba(43, 74, 115, 0.35);
+}
+.portrait { margin: 0; overflow: hidden; padding: 0; }
+.portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.portrait span { font: 600 4.5rem/1 var(--display); color: var(--accent); letter-spacing: 0.04em; }
+.portrait small { display: block; font: 400 0.75rem/1 var(--mono); color: var(--muted); margin-top: 14px; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; padding-top: 6px; }
+.btn {
+  display: inline-block; text-decoration: none; padding: 12px 22px; border-radius: 8px;
+  font: 600 1.05rem/1 var(--body); border: 1px solid var(--ink);
+}
+.btn.primary { background: var(--ink); color: var(--bg); }
+.btn:hover { border-color: var(--accent); }
+.btn.primary:hover { background: var(--accent); }
+
+/* Dated ledger, used for research, news and blogs */
+.ledger { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--faint); }
+.ledger li { border-bottom: 1px solid var(--faint); }
+.entry { display: grid; grid-template-columns: 130px 1fr; gap: 8px 32px; padding-block: 32px; text-decoration: none; }
+.entry > div { display: grid; gap: 8px; min-width: 0; }
+a.entry:hover h3 { color: var(--accent); }
+.badge { justify-self: start; font: 400 0.72rem/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; padding: 5px 8px; border-radius: 4px; background: var(--tint); color: var(--muted); }
+
+.section-head { display: grid; gap: 14px; }
+
+/* Creations */
+.creations { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 64px 56px; }
+.creations li { display: grid; gap: 8px; align-content: start; min-width: 0; }
+
+/* Posts */
+article { display: grid; gap: 40px; }
+.back { font: 400 0.85rem/1 var(--mono); color: var(--muted); text-decoration: none; }
+.back:hover { color: var(--ink); }
+.stop { display: grid; gap: 8px; }
+.stop ul { margin: 0; padding-left: 1.1em; color: var(--muted); display: grid; gap: 4px; }
+
+/* Creations galleries */
+.works { display: grid; gap: 96px; }
+.work { display: grid; gap: 22px; }
+.work-head { display: grid; gap: 8px; max-width: 60ch; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.gallery button {
+  padding: 0; border: 0; background: var(--tint); border-radius: 6px; overflow: hidden;
+  aspect-ratio: 1 / 1; cursor: zoom-in; display: block; width: 100%;
+}
+.gallery img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+.gallery button:hover img { transform: scale(1.04); }
+.gallery.collapsed button:nth-child(n+7) { display: none; }
+.more { justify-self: start; background: none; border: 0; padding: 0; cursor: pointer; font: 400 0.85rem/1 var(--mono); color: var(--accent); text-decoration: underline; text-underline-offset: 5px; }
+
+.lightbox { position: fixed; inset: 0; z-index: 20; background: rgba(255,255,255,0.97); display: grid; grid-template-rows: 1fr auto; place-items: center; padding: 56px 16px 28px; gap: 14px; }
+.lightbox img { max-width: min(92vw, 1000px); max-height: 78vh; object-fit: contain; border-radius: 4px; box-shadow: 0 20px 50px -25px rgba(0,0,0,.4); }
+.lightbox p { font: italic 500 1.05rem/1.4 var(--body); color: var(--muted); text-align: center; }
+.lb-btn { position: absolute; background: none; border: 0; cursor: pointer; font: 400 1.6rem/1 var(--display); color: var(--ink); padding: 12px; }
+.lb-close { top: 12px; right: 16px; }
+.lb-prev { left: 8px; top: 50%; }
+.lb-next { right: 8px; top: 50%; }
+@media (prefers-reduced-motion: reduce) { .gallery img { transition: none; } }
+
+/* News: outlets row + report cards */
+.seen-on { display: grid; gap: 18px; padding-block: 28px; border-block: 1px solid var(--faint); }
+.seen-on ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
+.seen-on a {
+  display: grid; place-items: center; text-align: center; min-height: 88px; padding: 14px 18px;
+  border: 1px solid var(--line, #d9d5cf); border-radius: 12px; text-decoration: none; background: var(--bg);
+  transition: border-color .2s ease, transform .2s ease;
+}
+.seen-on a:hover { border-color: var(--accent); transform: translateY(-2px); }
+.seen-on b { display: block; font: 600 1.5rem/1.05 var(--display); letter-spacing: 0.04em; color: var(--ink); }
+.seen-on small { display: block; margin-top: 6px; font: 400 0.72rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .seen-on a { transition: none; } .seen-on a:hover { transform: none; } }
+.press { display: grid; gap: 28px; }
+.press-card {
+  display: grid; grid-template-columns: 300px 1fr; gap: 0; overflow: hidden;
+  border: 1px solid var(--faint); border-radius: 14px; background: var(--bg);
+  box-shadow: 0 24px 50px -36px rgba(43, 74, 115, 0.45);
+}
+.press-card img { width: 100%; height: 100%; min-height: 220px; object-fit: cover; display: block; }
+.press-body { padding: 28px 32px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.press-body h3 { font-size: 1.55rem; }
+.press-card img.contain { object-fit: cover; object-position: center 40%; background: #f6f6f6; }
+.press-card.video { grid-template-columns: 1fr; }
+.video-frame { position: relative; aspect-ratio: 16 / 9; width: 100%; background: #111; overflow: hidden; }
+.video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+a.video-frame { display: block; text-decoration: none; }
+.video-frame img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .85; transition: opacity .25s ease, transform .4s ease; }
+a.video-frame:hover img { opacity: 1; transform: scale(1.02); }
+.play { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; gap: 14px; color: #fff; }
+.play i { width: 76px; height: 76px; border-radius: 50%; background: rgba(255,255,255,.95); display: grid; place-items: center; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+.play i::before { content: ""; border-left: 22px solid #1a1a1a; border-top: 13px solid transparent; border-bottom: 13px solid transparent; margin-left: 6px; }
+.play span { font: 600 0.95rem/1 var(--body); letter-spacing: .02em; text-shadow: 0 2px 10px rgba(0,0,0,.6); }
+.video-note { font: 400 0.75rem/1.4 var(--mono); color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .video-frame img { transition: none; } }
+.link-card { text-decoration: none; color: inherit; transition: transform .25s ease, box-shadow .25s ease; }
+.link-card:hover { transform: translateY(-3px); box-shadow: 0 30px 55px -34px rgba(43, 74, 115, 0.55); }
+.link-card:hover h3 { color: var(--accent); }
+section[data-view="german-boy"], section[data-view="make-your-bed"], section[data-view="the-martian"] { gap: 36px; max-width: 720px; margin-inline: auto; width: 100%; }
+.cover-frame { background: var(--tint); display: grid; place-items: center; padding: 28px 24px; }
+.trip-card .cover-frame img { width: auto; max-width: 100%; height: 300px; aspect-ratio: auto; object-fit: contain; border-radius: 3px; box-shadow: 0 18px 34px -18px rgba(0,0,0,.45); }
+.read-on { font: 400 0.85rem/1 var(--mono); color: var(--accent); padding-top: 4px; }
+.type-cover { background: var(--accent); color: #fff; display: grid; align-content: center; gap: 14px; padding: 28px; min-height: 220px; }
+.type-cover span { font: 600 2.4rem/1 var(--display); letter-spacing: .01em; }
+.type-cover small { font: 400 0.75rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; opacity: .8; }
+@media (prefers-reduced-motion: reduce) { .link-card { transition: none; } .link-card:hover { transform: none; } }
+.press-card.no-img { grid-template-columns: 1fr; }
+.reveal summary { list-style: none; cursor: pointer; display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.reveal summary::-webkit-details-marker { display: none; }
+.reveal summary h3 { display: inline; }
+.reveal summary:hover h3 { color: var(--accent); }
+.reveal-hint { font: 400 0.8rem/1 var(--mono); color: var(--accent); white-space: nowrap; }
+.reveal-hint::after { content: " +"; }
+.reveal[open] .reveal-hint { font-size: 0; }
+.reveal[open] .reveal-hint::after { content: "Show less −"; font-size: 0.8rem; }
+.reveal-body { display: grid; gap: 14px; padding-top: 16px; }
+.credit { font: 400 0.75rem/1.4 var(--mono); color: var(--muted); padding-top: 6px; }
+.press-links { display: flex; gap: 22px; flex-wrap: wrap; padding-top: 4px; }
+.press-links a { font: 600 1rem/1 var(--body); color: var(--accent); text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
+@media (max-width: 780px) {
+  .press-card { grid-template-columns: 1fr; }
+  .press-card img { height: 220px; }
+  .press-body { padding: 22px; }
+}
+
+/* Travel */
+.trips { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 32px; }
+.trip-card { display: grid; grid-template-rows: auto 1fr; text-decoration: none; border: 1px solid var(--faint); border-radius: 14px; overflow: hidden; background: var(--bg); transition: transform .25s ease, box-shadow .25s ease; }
+.trip-card:hover { transform: translateY(-3px); box-shadow: 0 26px 50px -34px rgba(43, 74, 115, 0.5); }
+.trip-card:hover h3 { color: var(--accent); }
+.trip-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+.trip-body { padding: 22px 24px 26px; display: grid; gap: 8px; align-content: start; }
+.post { max-width: 720px; margin-inline: auto; gap: 36px; }
+.post-head { display: grid; gap: 14px; }
+.post-head h2 { font-size: clamp(2.8rem, 7vw, 4.2rem); }
+.standfirst { font: italic 500 1.35rem/1.5 var(--body); color: var(--muted); }
+.post figure { margin: 0; display: grid; gap: 10px; }
+.post figure img { width: 100%; border-radius: 10px; display: block; }
+.post figure.cover img { max-height: 560px; object-fit: cover; }
+.post figure.tall img { width: auto; max-width: 100%; max-height: 560px; justify-self: center; }
+.post figcaption { font: italic 500 0.98rem/1.4 var(--body); color: var(--muted); text-align: center; }
+.prose-post { display: grid; gap: 22px; }
+.prose-post p { line-height: 1.85; }
+.prose-post h2 { font-size: 2.3rem; margin-top: 28px; }
+.prose-post h3 { font-size: 1.6rem; margin-top: 18px; }
+@media (max-width: 780px) { .trips { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .trip-card { transition: none; } .trip-card:hover { transform: none; } }
+
+/* Reading */
+.book-review { display: grid; grid-template-columns: 1fr; max-width: 720px; margin-inline: auto; gap: 48px; align-items: start; padding-top: 8px; }
+.book-cover { margin: 0; position: sticky; top: 110px; }
+.book-cover img { width: 100%; display: block; border-radius: 4px; box-shadow: 0 30px 50px -28px rgba(0,0,0,.45), 0 2px 6px rgba(0,0,0,.08); }
+.book-body { display: grid; gap: 12px; min-width: 0; }
+.book-body h3 { font-size: clamp(2rem, 5vw, 2.6rem); }
+.book-author { font: italic 500 1.2rem/1.3 var(--body); color: var(--muted); margin-bottom: 10px; }
+.book-body p:not(.book-author) { line-height: 1.85; }
+@media (max-width: 780px) { .book-review { grid-template-columns: 1fr; gap: 28px; } .book-cover { position: static; max-width: 220px; } }
+
+footer { border-top: 1px solid var(--faint); padding-block: 32px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; color: var(--muted); font: 400 0.8rem/1.5 var(--mono); }
+
+@media (max-width: 780px) {
+  .hero { grid-template-columns: 1fr; gap: 48px; }
+  .portrait { justify-self: start; max-width: 260px; }
+  .creations { grid-template-columns: 1fr; gap: 48px; }
+  .entry { grid-template-columns: 1fr; gap: 6px; padding-block: 26px; }
+  main { padding-block: 72px 110px; }
+  section[data-view] { gap: 64px; }
+}
+</style>
+
+<header class="site-top">
+  <div class="wrap bar">
+    <a class="brand" href="#home">RidhaanDesai</a>
+    <nav aria-label="Main">
+      <a href="#home" data-tab="home">About</a>
+      <a href="#research" data-tab="research">Research &amp; Projects</a>
+      <a href="#creations" data-tab="creations">Creations</a>
+      <a href="#news" data-tab="news">In the News</a>
+      <a href="#travel" data-tab="travel">Travel</a>
+      <a href="#reading" data-tab="reading">Reading</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HOME / ABOUT -->
+  <section data-view="home">
+    <div class="hero">
+      <div class="hero-text">
+        <h1><span class="first">Ridhaan</span><br>Desai</h1>
+        <p>Neurons, knife skills and shutter speeds. I'm Ridhaan Desai, a high school student fascinated by how the brain turns electrical signals into thoughts, and how living systems keep themselves running. Most of my free time goes into watching and playing basketball, cooking, reading, and photography.</p>
+      </div>
+      <figure class="portrait"><img src="images/65e4d30a57.jpg" alt="Ridhaan Desai"></figure>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section data-view="research" hidden>
+    <div class="intro">
+      <span class="kicker">research &amp; projects</span>
+      <h2>Research &amp; Projects</h2>
+      <p class="muted">What I'm investigating, and the things I'm building.</p>
+    </div>
+    <div class="press">
+      <article class="press-card">
+        <img class="contain" src="images/ce5efe727e.jpg" alt="A white stereo microscope on a white table">
+        <div class="press-body">
+          <span class="date">Current research</span>
+          <h3>Epilepsy</h3>
+          <p>Currently researching the topic of epilepsy.</p>
+          <p class="credit">Photo: Pawel Czerwinski on Unsplash</p>
+        </div>
+      </article>
+      <a class="press-card link-card" href="#tech-challenge">
+        <div class="type-cover"><span>Tech<br>Challenge</span><small>San Jose · 2025</small></div>
+        <div class="press-body">
+          <span class="date">Project · 2025</span>
+          <h3>Tech Challenge San Jose</h3>
+          <p class="muted">Designing and building a gravity-powered vehicle with an international team, for The Tech Interactive's youth engineering challenge.</p>
+          <span class="read-on">Read more →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- PROJECT: TECH CHALLENGE -->
+  <section data-view="tech-challenge" hidden>
+    <article class="post">
+      <a class="back" href="#research">← research &amp; projects</a>
+      <header class="post-head">
+        <span class="date">Project · 2025</span>
+        <h2>Tech Challenge San Jose</h2>
+        <p class="standfirst">Designing and building a gravity-powered vehicle with an international team.</p>
+      </header>
+      <div class="prose-post">
+        <p>2025's challenge brought together over 300 teams in our age group to design and build gravity-powered vehicles. The event involved several rigorous components, including an Engineering Journal submission, an in-depth team interview, a live time-bound track run with the final prototype, and a post-run reflection interview. Our team performed with exceptional confidence at every stage.</p>
+        <p>Our project was the result of a long-term commitment, beginning in August last year. As an international team spanning the Bay Area, USA, and Bangalore, India, we engaged in extensive scientific research, applied the design engineering process, developed and tested multiple prototypes, and authored a comprehensive engineering journal. What truly stood out was our dedication, teamwork, and problem-solving mindset. We navigated time zone differences by consistently meeting during weekend nights and early mornings, demonstrating outstanding initiative, time management, and collaboration across geographies.</p>
+        <div class="press-links">
+          <a href="https://www.thetech.org/education/tech-challenge/tech-challenge-2027/past-challenges/" target="_blank" rel="noopener">Visit the Tech Challenge website ↗</a>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- CREATIONS -->
+  <section data-view="creations" hidden>
+    <div class="intro">
+      <span class="kicker">creations</span>
+      <h2>Things I've made</h2>
+      <p class="muted">Engineering, art, origami and food, plus the work I do for the environment.</p>
+    </div>
+    <div class="works">
+      <div class="work">
+        <div class="work-head"><span class="date">Climate Action</span><h3>Tikkun Olam</h3><p class="muted">My effort to repair the world: cutting water waste and pollution, and planting trees with Our City Forest.</p></div>
+        <div class="gallery"><button type="button"><img src="images/09d03a8a79.jpg" alt="MLK Day tree planting with Our City Forest" width="600" height="600" loading="lazy"></button><button type="button"><img src="images/46259a37f1.jpg" alt="Volunteering at Our City Forest" width="448" height="600" loading="lazy"></button></div>
+      </div>
+      <div class="work">
+        <div class="work-head"><span class="date">Art</span><h3>Art Studio</h3><p class="muted">Drawings, paintings and sculpture, including two hearts for Hearts in San Francisco.</p></div>
+        <div class="gallery collapsed"><button type="button"><img src="images/4e63391ed3.jpg" alt="Painted hearts and drawings" width="600" height="600" loading="lazy"></button><button type="button"><img src="images/9260d1586b.jpg" alt="Painted clay pots" width="800" height="228" loading="lazy"></button><button type="button"><img src="images/54454d3c64.jpg" alt="Corona Circus, featured by Hearts in San Francisco" width="276" height="600" loading="lazy"></button><button type="button"><img src="images/25fe295a1a.jpg" alt="Leaf-print painting" width="450" height="600" loading="lazy"></button><button type="button"><img src="images/7091d50ae1.jpg" alt="Painted frame" width="450" height="600" loading="lazy"></button><button type="button"><img src="images/9020e50e95.jpg" alt="Minecraft poster" width="800" height="600" loading="lazy"></button><button type="button"><img src="images/b16b3fc932.jpg" alt="Buddha drawing" width="424" height="600" loading="lazy"></button><button type="button"><img src="images/f1bc6d0d1e.jpg" alt="Lion drawing" width="450" height="600" loading="lazy"></button><button type="button"><img src="images/3106588bb7.jpg" alt="Giraffe drawing" width="450" height="600" loading="lazy"></button><button type="button"><img src="images/963d260e60.jpg" alt="Landscape drawing" width="728" height="600" loading="lazy"></button><button type="button"><img src="images/4f5f3ce6a7.jpg" alt="Say Treees heart for Hearts in San Francisco" width="520" height="600" loading="lazy"></button><button type="button"><img src="images/f4a86e691e.jpg" alt="Starry night with a diya" width="450" height="600" loading="lazy"></button><button type="button"><img src="images/203781fa19.jpg" alt="Go Away Corona" width="794" height="600" loading="lazy"></button><button type="button"><img src="images/2bbe955e73.jpg" alt="Life in lockdown" width="434" height="600" loading="lazy"></button><button type="button"><img src="images/88a43bc6ed.jpg" alt="Madhubani-style Ganesha" width="444" height="600" loading="lazy"></button></div>
+        <button class="more" type="button" data-label="Show all 15 photos">Show all 15 photos</button>
+      </div>
+      <div class="work">
+        <div class="work-head"><span class="date">Paper</span><h3>Origami &amp; Paper</h3><p class="muted">Folded bookmarks, cards and paper projects.</p></div>
+        <div class="gallery"><button type="button"><img src="images/2ed85c794c.jpg" alt="Origami corner bookmarks" width="724" height="600" loading="lazy"></button><button type="button"><img src="images/79142d6c70.jpg" alt="Joke card" width="428" height="600" loading="lazy"></button><button type="button"><img src="images/00f5612f5a.jpg" alt="Thank-you card for my teachers" width="450" height="600" loading="lazy"></button><button type="button"><img src="images/c637f14ed8.jpg" alt="Family tree" width="800" height="552" loading="lazy"></button></div>
+      </div>
+      <div class="work">
+        <div class="work-head"><span class="date">Food</span><h3>Kitchen</h3><p class="muted">Recent cooking and baking projects.</p></div>
+        <div class="gallery"><button type="button"><img src="images/2a96e61311.jpg" alt="Fruit chess set" width="800" height="600" loading="lazy"></button><button type="button"><img src="images/90fa80d270.jpg" alt="Homemade pizza" width="800" height="450" loading="lazy"></button><button type="button"><img src="images/f5a6a9b5e1.jpg" alt="Date and nut bites" width="518" height="600" loading="lazy"></button><button type="button"><img src="images/68a9a13303.jpg" alt="Chocolate cake" width="718" height="600" loading="lazy"></button><button type="button"><img src="images/4618883910.jpg" alt="Fruit face plate" width="450" height="600" loading="lazy"></button><button type="button"><img src="images/ddc86a9d3d.jpg" alt="Homemade popsicles" width="450" height="600" loading="lazy"></button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section data-view="news" hidden>
+    <div class="intro">
+      <span class="kicker">in the news</span>
+      <h2>In the News</h2>
+      <p class="muted">Awards, events, programs and milestones.</p>
+    </div>
+    <div class="seen-on">
+      <span class="kicker">as seen on</span>
+      <ul>
+        <li><a href="https://www.cbsnews.com/sanfrancisco/video/8-year-old-lawnbuster-helps-his-community-conserve-water/" target="_blank" rel="noopener"><span><b>CBS News</b><small>Bay Area</small></span></a></li>
+        <li><a href="https://www.ktvu.com/video/1027028" target="_blank" rel="noopener"><span><b>KTVU</b><small>FOX 2 · San Francisco</small></span></a></li>
+        <li><a href="https://ktvz.com/cnn-regional/2022/10/19/california-drought-8-year-old-lawnbuster-is-changing-the-world-one-yard-at-a-time/" target="_blank" rel="noopener"><span><b>KTVZ</b><small>Central Oregon</small></span></a></li>
+        <li><a href="https://kesq.com/?p=1013616" target="_blank" rel="noopener"><span><b>KESQ</b><small>Palm Springs</small></span></a></li>
+      </ul>
+    </div>
+
+    <div class="press">
+      <article class="press-card video">
+        <div class="video-frame"><iframe src="https://www.cbsnews.com/sanfrancisco/video/8-year-old-lawnbuster-helps-his-community-conserve-water/?embed=1" title="CBS News: 8-year-old Lawnbuster" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div><p class="video-note" style="padding:10px 32px 0">Video not playing? <a href="https://www.cbsnews.com/sanfrancisco/video/8-year-old-lawnbuster-helps-his-community-conserve-water/" target="_blank" rel="noopener">Watch on CBS News ↗</a></p>
+        <div class="press-body">
+          <span class="date">CBS News Bay Area · Oct 2022</span>
+          <h3>California Drought: 8-year-old 'Lawnbuster' is changing the world one yard at a time</h3>
+          <p class="muted">A report by Kiet Do on my volunteering with Lawnbusters, an Our City Forest program that swaps thirsty lawns for drought-tolerant gardens for seniors, veterans and low-income families. The story was also picked up by KTVZ and KESQ.</p>
+          <div class="press-links">
+            <a href="https://www.cbsnews.com/sanfrancisco/news/california-drought-8-year-old-lawnbuster-is-changing-the-world-one-yard-at-a-time/" target="_blank" rel="noopener">Read the story ↗</a>
+          </div>
+        </div>
+      </article>
+      <article class="press-card video">
+        <div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/qSS-qeYuFhk?rel=0" title="KTVU: 3rd grader&#x27;s artwork a winner" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div><p class="video-note" style="padding:10px 32px 0">Video not playing? <a href="https://www.youtube.com/watch?v=qSS-qeYuFhk" target="_blank" rel="noopener">Watch on YouTube ↗</a></p>
+        <div class="press-body">
+          <span class="date">KTVU FOX 2 · Jan 2022</span>
+          <h3>3rd grader's artwork a winner in Hearts in San Francisco project</h3>
+          <p class="muted">Coverage of my heart "Corona Circus," which made me the youngest artist chosen for the Hearts in San Francisco fundraiser for San Francisco General Hospital.</p>
+          <div class="press-links">
+            <a href="https://www.ktvu.com/news/3rd-graders-artwork-a-winner-in-hearts-in-san-francisco-project" target="_blank" rel="noopener">Read the story ↗</a>
+          </div>
+        </div>
+      </article>
+      <article class="press-card video">
+        <div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/U2acgshDLh8?start=108&rel=0" title="Golden State Warriors get their NBA Championship Bling" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div><p class="video-note" style="padding:10px 32px 0">Video not playing? <a href="https://www.youtube.com/watch?v=U2acgshDLh8&t=108s" target="_blank" rel="noopener">Watch on YouTube ↗</a></p>
+        <div class="press-body">
+          <span class="date">CBS News Bay Area · Oct 2022</span>
+          <h3>Golden State Warriors get their NBA Championship Bling</h3>
+          <p class="muted">KPIX coverage of the Warriors' championship ring night. From 1:48, the Warriors recognize me as their youngest Impact Warrior.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- TRAVEL -->
+  <section data-view="travel" hidden>
+    <div class="intro">
+      <span class="kicker">travel blog</span>
+      <h2>Travel</h2>
+      <p class="muted">Notes from trips, with the stops worth making.</p>
+    </div>
+    <div class="trips">
+      <a class="trip-card" href="#south-korea">
+        <img src="images/ad43868342.jpg" alt="Gangnam Style statue outside the COEX mall in Seoul">
+        <div class="trip-body">
+          <span class="date">15 Jul 2026</span>
+          <h3>South Korea</h3>
+          <p class="muted">A school history trip from the malls of Seoul to the DMZ and the ancient Silla capital of Gyeongju.</p>
+        </div>
+      </a>
+      <a class="trip-card" href="#kerala">
+        <img src="images/928bcba920.jpg" alt="A field of pink water lilies in Kerala">
+        <div class="trip-body">
+          <span class="date">02 Feb 2026</span>
+          <h3>Kerala</h3>
+          <p class="muted">Backwaters and water lilies in Kumarakom, then spice farms, martial arts and honey bees in Thekkady.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- POST: SOUTH KOREA -->
+  <section data-view="south-korea" hidden>
+    <article class="post">
+      <a class="back" href="#travel">← travel</a>
+      <header class="post-head">
+        <span class="date">15 Jul 2026 · Ridhaan Desai</span>
+        <h2>South Korea</h2>
+        <p class="standfirst">A school history trip from the malls of Seoul to the DMZ and the ancient Silla capital of Gyeongju.</p>
+      </header>
+      <figure class="cover"><img src="images/ad43868342.jpg" alt="Gangnam Style statue outside the COEX mall in Seoul"></figure>
+
+      <div class="prose-post">
+        <p>South Korea is a great place for family and friends both to spend time in. I visited South Korea with my school, for a history trip. While it may not look like the most historical place in the world, with vibrant shopping streets and glorious malls, it has some places that are rich in historical significance.</p>
+
+        <h3>Starfield COEX Mall</h3>
+        <p>The first part of the trip was a visit to the Starfield COEX mall. The entrance of the mall was a fairly large glass automatic door, which was followed by a set of two escalators that led downstairs into a huge, open indoor area. The center of this large area contained two or three tall, stretched, and angled faces. Huge walls lined the side of this area, and they were filled with books of various genres. Many different pathways extended from that area, stretching into a mall. They led to numerous stores and shops, selling skincare, coffee, ice cream, and a lot of other exciting goods. Adjacent to the mall, there was a golden Gangnam Style statue whose colours contrasted with those of the glass buildings which surrounded it.</p>
+
+        <h3>Hot Pot</h3>
+        <p>For dinner on a few days, we ate a hot pot meal. In this style of eating, each person gets a base broth and a pot. We put the broth into the pot and keep it on low heat. On the side, there is a conveyor belt, which carries various ingredients which we can boil in our broth. We can also adjust the temperature of the boil to make it slower or milder. I used instant ramen noodles to make a cheesy pork broth ramen with tteokbokki, cabbage, and fried chicken.</p>
+
+        <h3>Turtle Ship Museum</h3>
+        <p>Then we visited a turtle ship museum, which highlighted the Koreans’ secret weapon in the long Korean-Japanese wars. This special attack ship was used and developed by Admiral Yi Sun-Shin of the Joseon dynasty. It could repel attacks from above, which many ships were not able to do at the time, making it one of the first ever armoured ships. It was also able to outmanoeuvre ships due to its drag-reducing build and long oars, which required heavy manpower. Following that, we created our own turtle ships using kits.</p>
+
+        <h3>Gyeongbokgung Palace</h3>
+        <p>Next, we visited Gyeongbokgung Palace. We dressed in a traditional outfit called hanbok and walked to the palace. It featured a white shirt and dark pants, with an intricately or simply designed vest on top. It was also optional to wear a black hat with a permeable material, called a gat. The specific type that we wore is called a heukrip. As for the palace, the primary section was a large square, with guard ceremonies being performed in the centre from time to time. The second part of the palace was also a square, but this time with a smaller palace placed in the center. There was also a palace museum on the periphery, which talks about the rich Joseon history of the palace.</p>
+        <figure><img src="images/8ac0e50119.jpg" alt="A pavilion reflected in a pond at Gyeongbokgung Palace"><figcaption>Gyeongbokgung Palace</figcaption></figure>
+
+        <h3>Seodaemun Prison History Hall</h3>
+        <p>The next place we visited was Seodaemun Prison History Hall. This was a museum dedicated to highlighting the struggles of South Koreans who were oppressed by the Japanese during colonisation. It was a former Japanese prison that became a South Korean prison after independence due to the poor economy. The quarters were originally a hexagonal chamber which branched out into six other halls with rooms to house prisoners. The first displays showed numerous methods of torture and portrayed the difficulties of Korean prisoners. They could not even talk to each other, so in the case of an emergency, there was a switch which they flipped from inside that made a stick protrude outside. This alerted others without direct communication and talking.</p>
+
+        <h3>Hongdae Street</h3>
+        <p>In the evening, we went to Hongdae street. It was buzzing with activity in the late evening, and there were many shops featuring clothing, skincare, souvenirs, and more. There was a wide range of ages, from young graduates to adults in their 50s.</p>
+
+        <h3>The DMZ</h3>
+        <p>The next stop was the DMZ. The demilitarised zone is an area between the borders, along the 38th parallel. Nature thrives here, and there are many villages too. There were tunnels dug by North Koreans to invade South Korea; four have been discovered so far, which North Korea claims they used to mine coal. We walked in the 3rd tunnel and glimpsed a spot where the mining was stopped. The ceiling was fairly low, and for some stretches you had to crouch to walk. Then we went to Dora Observatory, a place where we could see North Korea. First, we viewed North Korea from a building on high ground with one side made of glass. There was a three-dimensional map which we could refer to while looking out.</p>
+        <p>On the top floor, there was a large balcony with binoculars, used to see the other side, where we saw tanks, football courts, and towns.</p>
+        <figure class="tall"><img src="images/1ffc59c4a4.jpg" alt="A memorial flame at the DMZ"><figcaption>At the DMZ</figcaption></figure>
+
+        <h3>War Memorial of Korea</h3>
+        <p>The War Memorial of Korea features a circle of flags and an enormous building set within its main expanse. Inside, numerous exhibits highlight the weaponry, leaders, and struggles of the war, including a large, high-roofed room that holds life-size models of planes, tanks, and trucks. Among the displays are exhibits about the armistice signed by the Korean People's Army, the Chinese People's Volunteer Army, and the UN Command, the Korean Armistice Agreement, which ended a great deal of tragedy and saved thousands of lives.</p>
+
+        <h3>Bulguksa Temple</h3>
+        <p>Bulguksa Temple, a UNESCO World Heritage Site, stands as a representation of Buddhist culture from the Silla dynasty of the Korean Peninsula. The grounds featured shaded walks with many beautiful ponds and waterfalls, while the main temples held two pagodas, one to represent Buddha and the other to represent Buddhist values and the life of Buddha. The temple is part of Gyeongju, the ancient capital of Silla, the kingdom that conquered Baekje and Goguryeo to form Unified Silla and bring the entire Korean Peninsula under a single rule.</p>
+        <figure><img src="images/99747d8248.jpg" alt="Gardens and a pond in Gyeongju"><figcaption>Gyeongju</figcaption></figure>
+
+        <h3>Gyeongju National Museum</h3>
+        <p>The Gyeongju National Museum displayed Buddhist Silla artwork throughout its grounds. One of the main exhibits was a bell with an ancient story, said to make the sound "ye-me-le" when struck. Much of the Buddhist artwork was presented in futuristic displays, with dark rooms and white light shining on pots, statues, tools, and more. One statue I remember was a cube featuring the four protectors of Buddha, accompanied by a separate display explaining each side of the cube and what each protector portrayed, with the four figures representing the four directions: north, south, east, and west. The museum was a complex hosting many different buildings, each with something different to offer, including one dedicated to the gold artifacts of the Silla dynasty.</p>
+        <figure class="tall"><img src="images/9f97015833.jpg" alt="A stone pagoda lit in a dark museum gallery"><figcaption>Gyeongju National Museum</figcaption></figure>
+
+        <h3>Daereungwon Tomb Complex</h3>
+        <p>The Daereungwon Tomb Complex was a unique burial site where artifacts lay buried beneath large, smooth, green hills. The tomb on display had a grey stone gateway on the outside that led to a chamber within, where a rectangular glass display held tools, jewellery, and more. The passageway behind it hosted other Silla exhibits, such as the horse exhibit, which displayed the ornaments and armour a horse would wear into combat. Another of the exhibits showed the clothes of a king, offering a glimpse of what a king would have worn.</p>
+        <figure class="tall"><img src="images/631ad81c90.jpg" alt="A grassy burial mound beside a lily pond"><figcaption>Daereungwon Tomb Complex</figcaption></figure>
+
+        <h3>Donggung Palace and Wolji Pond</h3>
+        <p>Donggung Palace and Wolji Pond form a fantastic pairing of ancient architecture and nature. Wolji Pond is a large body of water with three islands, offering a great hike around its edges and plenty of wildlife along the way, as well as lotus-themed solar panels. The palace was a wonderful sight, standing a single storey tall unlike the other palace I had seen, and it taught me a great deal about Silla architecture.</p>
+
+        <h3>Conclusion</h3>
+        <p>This trip was my first international school trip, and it lived up to my expectations, with a mix of modern and ancient experiences. I was amazed that the Korean alphabet, Hangul, was made with no outside help. Its simplicity makes it easy for anyone to learn. I was also inspired by the courage of the Korean soldiers against Japan in the Battle of Myeongnyang, where 13 Korean ships faced 133 Japanese ships. The Koreans were led by the legendary Admiral Yi Sun-Shin. I would recommend South Korea to travellers of all ages.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- POST: KERALA -->
+  <section data-view="kerala" hidden>
+    <article class="post">
+      <a class="back" href="#travel">← travel</a>
+      <header class="post-head">
+        <span class="date">02 Feb 2026 · Ridhaan Desai</span>
+        <h2>Kerala</h2>
+        <p class="standfirst">Backwaters and water lilies in Kumarakom, then spice farms, martial arts and honey bees in Thekkady.</p>
+      </header>
+      <figure class="cover"><img src="images/928bcba920.jpg" alt="A field of pink water lilies in Kerala"></figure>
+
+      <div class="prose-post">
+        <p>Kerala is a vibrant and beautiful state, with many cities unique in their own way. I am going to cover two of them: Kumarakom and Thekkady.</p>
+
+        <h2>Kumarakom</h2>
+        <p>Kumarakom is known for having the biggest lake in Kerala, Lake Vembanad, 785 mi². Kerala's biggest river, the Periyar, also reaches Kumarakom; it starts from Thekkady and ends in Kumarakom, 152 miles long.</p>
+
+        <h3>Shikara Boat</h3>
+        <p>The lake provides many thrilling and relaxing experiences, such as shikara boating and house boating. Unfortunately, due to a lack of time I could not go house boating, but I could do shikara boating. A shikara boat is a roofed boat, usually with comfortable chairs and sometimes mattresses inside, and they are from 15 to 30 feet long. The rides are about 3 to 4 hours long, with activities in between, like fishing, local ways to make objects, and coconut tapping, a way of extracting a drink from coconuts called toddy. If it rains, there are tarps on the side of the boat to cover the sides so you don't get wet.</p>
+        <figure><img src="images/a6549c3999.jpg" alt="A shikara boat moored under palm trees"><figcaption>A shikara boat on the backwaters</figcaption></figure>
+
+        <h3>Water Lilies</h3>
+        <p>There is also another noteworthy but lesser-known experience, the water lily garden. You start with a car ride to a canal, and that canal leads you to a huge expanse covered in pink water lilies as far as the eye can see. You go into the field in a small boat with someone to paddle it. There are also other flowers there, like white water lilies. The paddler also pulls lilies from the water and makes creative necklaces out of them. The ride is 30 to 45 minutes, and after it, you go back to the same boat you came from.</p>
+        <figure><img src="images/a8f6ffe8dd.jpg" alt="Pink water lilies stretching to a line of palm trees"><figcaption>The water lily field</figcaption></figure>
+
+        <h3>Gokulam Grand Resort</h3>
+        <p>Gokulam Grand is a backwater resort with great service, food, and views. It features a man-made lagoon, where you can do many activities such as fishing, paddle boating, kayaking, and canoeing. There is also a game zone with a table tennis table, a foosball table, a pool table, a pair of chess boards and a pair of carrom tables. It has 52 well-maintained rooms and 17 luxury cottages to stay in. Some of the rooms have a swimming pool right outside, for the guests' convenience. The restaurant has an à la carte menu and a buffet service for breakfast, lunch, and dinner, with authentic local food as well as continental items. Their room service is very reliable, always delivering food or towels on time. In conclusion, Gokulam Grand Kumarakom is a stunning, neat, and fun place to stay while you are there.</p>
+
+        <h2>Thekkady</h2>
+        <p>Thekkady is known for the Periyar Tiger Reserve, its many spice plantations and its location in the mountains, with many types of flora and fauna.</p>
+
+        <h3>Spice Plantation</h3>
+        <p>Green Valley is a spice plantation in Thekkady that grows Ayurvedic medicine and sells it too. In the plantation, the guide walked us through the garden and showed us many different spices and medicines, like cardamom, vanilla, brahmi, ashwagandha, and neem. At the end of the tour we also got to see the medicines in their final forms and buy them, along with some spices grown on the farm.</p>
+
+        <h3>Kalaripayattu</h3>
+        <p>Kalaripayattu is a Keralan form of martial arts that I watched in an arena right outside my resort. Many different types of metal weapons are used, like axes, swords, and shields. It is a thrilling experience unique to the area, with about 6 people taking part. There is sometimes audience participation too, where the performers jump over audience members. There is also a fiery surprise at the end.</p>
+
+        <h3>Kathakali</h3>
+        <p>Probably one of the most famous things about Kerala, Kathakali is a dance form which tells stories through expressions without words. The show was in the same place as the Kalaripayattu. There are two dancers, and first they show all their expressions and what they mean, and then they begin a performance. It surely lived up to its reputation.</p>
+
+        <h3>Honey Bee Farm</h3>
+        <p>Phillips Honey Bee Farm is a family-owned farm built from scratch that has won national awards. The guide was very polite and explained the process very well, showing us the layers of each hive hands-on. We also got to hold a layer covered in honey bees, which was surely an experience I will never get again. At the end we got to try the different types of honey and buy bottles of it too.</p>
+        <figure><img src="images/150cba187c.jpg" alt="Rows of beehives among banana plants at a honey bee farm"><figcaption>Phillips Honey Bee Farm</figcaption></figure>
+
+        <h3>Spice Village CGH Earth</h3>
+        <p>Spice Village was a resort immersed in nature, surrounded by trees and wildlife everywhere. The rooms are cottages with no AC, but they are built so that the wind circulates inside to keep you cool. The food and the restaurant are spot on, serving local food as well as continental. There was also a snacks and tea period in the afternoon. There is a special Tiger Club with wildlife specialists for any wildlife enthusiasts. Monkeys, especially Nilgiri langurs and bonnet macaques, pay visits to the trees and the roofs. There is a traditional Ayurvedic spa and basketball, badminton, tennis and table tennis courts.</p>
+
+        <h3>Conclusion</h3>
+        <p>In summary, Kerala is a great place to visit with your family or on your own, because the food there is amazing, the sights around Kerala are breathtaking, and it's a good place to unwind. For adventurers there is also a tiger reserve. So next time you are wondering where to go when you are travelling in India, Kerala is always a great option.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- READING -->
+  <section data-view="reading" hidden>
+    <div class="intro">
+      <span class="kicker">reading blog</span>
+      <h2>Reading</h2>
+      <p class="muted">Reviews of books I've finished.</p>
+    </div>
+    <div class="trips">
+      <a class="trip-card" href="#german-boy">
+        <div class="cover-frame"><img src="images/9f0a499109.jpg" alt="Cover of German Boy: A Refugee's Story by Wolfgang W. E. Samuel"></div>
+        <div class="trip-body">
+          <span class="date">December 2024</span>
+          <h3>German Boy</h3>
+          <p class="muted">by Wolfgang W. E. Samuel</p>
+          <span class="read-on">Read review →</span>
+        </div>
+      </a>
+      <a class="trip-card" href="#make-your-bed">
+        <div class="cover-frame"><img src="images/2773728ad9.jpg" alt="Cover of Make Your Bed by Admiral William H. McRaven"></div>
+        <div class="trip-body">
+          <span class="date">Book review</span>
+          <h3>Make Your Bed</h3>
+          <p class="muted">by Admiral William H. McRaven</p>
+          <span class="read-on">Read review →</span>
+        </div>
+      </a>
+      <a class="trip-card" href="#the-martian">
+        <div class="cover-frame"><img src="images/d5f292ce4c.jpg" alt="Cover of The Martian by Andy Weir"></div>
+        <div class="trip-body">
+          <span class="date">Book review</span>
+          <h3>The Martian</h3>
+          <p class="muted">by Andy Weir</p>
+          <span class="read-on">Read review →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- BOOK: GERMAN BOY -->
+  <section data-view="german-boy" hidden>
+    <a class="back" href="#reading">← reading</a>
+    <article class="book-review">
+      <div class="book-body">
+        <span class="date">December 2024</span>
+        <h3>German Boy</h3>
+        <p class="book-author">by Wolfgang W. E. Samuel</p>
+        <p>“German Boy” by Wolfgang W. E. Samuel is an autobiography situated in 1945, depicting the scene in Eastern Germany through the lens of a child. Samuel, when he was ten, was residing in Eastern Germany with his mother and younger sister, and his father was serving away as a Luftwaffe officer. As the Soviets advanced east, the family joined millions of refugees fleeing west, often with no food or water, until they found themselves in a Soviet occupation zone. The book is about the loss, struggle, and hardships of the family as they fought to bring back what was. In the Soviet occupation zone, Samuel saw violence, looting, and oppression by Soviet officers on residents of the area. Over time, the mother broke down due to her workload, and Samuel had to cover for what was lost, doing chores, getting food, foraging, trading, and more work. This book is unique because it is viewed through the eyes of a child, who is more innocent and oblivious than an adult or a teenager. Writing through the perspective of a child prompts the reader to feel sympathetic for the child, because war isn’t the environment any child should grow up in, and here, Samuel grows up without a father figure for a lot of his life too. The book also speaks for the millions of other refugees across the world in World War Two, all suffering famine, drought, loss, and despair. So many other people across the world have experienced this struggle, and this book represents them too. Another theme of this book is growing up too fast. Samuel enters the book as a ten-year-old, has just barely scratched the surface of his life, and gets thrown into the turmoil and suffering of World War Two. To survive, he has to toughen up, fast. Throughout this book, he has to make impossible decisions and see things children should never see. At the end, there is a clear difference from the start: being an adult who takes care of his family and serving in the army. Just to note, not necessarily an adult of age, but an adolescent mindset. I would recommend this book to a teenager, not to a child, because of the gruesome language and the complex ideas. Anyone would learn a lot from this book, because it gives valuable insight into World War Two coming from someone who lived through it himself.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- BOOK: MAKE YOUR BED -->
+  <section data-view="make-your-bed" hidden>
+    <a class="back" href="#reading">← reading</a>
+    <article class="book-review">
+      <div class="book-body">
+        <span class="date">Book review</span>
+        <h3>Make Your Bed</h3>
+        <p class="book-author">by Admiral William H. McRaven</p>
+        <p>Make Your Bed, by Admiral William H. McRaven, is an inspirational book comprising ten lessons. These are life lessons which are derived from decades of SEAL experience, but are mainly based off of five years of basic Navy SEAL training. My biggest takeaway is actually the first lesson. The first lesson is to make your bed. This is, in my opinion, the most important one. It seems like nothing but a trivial task, but there is deep psychology behind it. If you finish your first task of your day, it gives you the confidence to finish all the others behind it. I integrated it into my life, and I find it to enhance the quality of all work that I do, and make it more efficient. I learnt you can always look at the made bed and feel proud of yourself, urging you to keep going forward in any task you are doing. This lesson doesn’t only need to apply to someone in the army; it can also apply to other professions or identities. One example is in a medical profession, like a neurosurgeon. Being a neurosurgeon takes a lot of willpower and energy, waking up in the morning or at night, continuously working 36-hour shifts, having long, tedious surgeries, all while knowing one mistake can kill your patient or end your career. The amount of pressure bearing down on your shoulders, along with the fatigue, can crumple any normal person. If the surgeon wakes up and makes their bed, that gives them a spark of accomplishment, which will build up into completing a long surgery, figuring out a complex solution to a problem, or even working out an argument with a boss. Admiral McRaven suggests that sometimes, all you need to have a successful day is to make your bed. Something unique about this book was that Admiral McRaven talked about these lessons in stories. Usually, when someone tells me a lesson, I acknowledge it and move on. I remember the lesson for a while, but the habit and memory eventually fade. In this book, he talked about his lessons through stories, which helped me remember a lot. It’s just like how, when learning Chinese, sometimes you get taught stories for some characters to help you remember them better. The technique of storytelling also prompts the reader to think in more complex ways and ask questions. I am now looking forward to reading his other books, like “The Wisdom of the Bullfrog”. In conclusion, this book was a great way for Admiral McRaven to compress his long experience in the military into ten useful, essential lessons.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- BOOK: THE MARTIAN -->
+  <section data-view="the-martian" hidden>
+    <a class="back" href="#reading">← reading</a>
+    <article class="book-review">
+      <div class="book-body">
+        <span class="date">Book review</span>
+        <h3>The Martian</h3>
+        <p class="book-author">by Andy Weir</p>
+        <p>The Martian, by Andy Weir, is a sci-fi fiction novel about a NASA astronaut named Mark Watney who got stranded on Mars during the Ares 3 mission. He had a team of six people, led by Melissa Lewis. When the team landed on Mars, they set up camp and studied samples for a while. Then, a furious dust storm hit, making them evacuate. During the storm, when Mark was going back to the ship, a piece of debris hit him, making it look like he had died, forcing the team to leave without him. Later, he wakes up and finds himself stranded on Mars. At the start, he pretty much gave up and accepted his fate, but it is interesting to see his train of thought throughout the story, how he slowly gets motivated to figure out a way to survive. This story is one of my favourite sci-fi novels, because it’s so realistic, based on actual science, yet some concepts are so absurd that no child in their wildest imagination could have thought of them. Mark Watney does things like make water out of rocket fuel, grow potatoes in Martian soil, and power rovers with nuclear material, not failing to amaze the reader every chapter. Something unique Andy Weir does in this novel is that he documents Mark Watney’s experiences through a log, which he writes in every day and records his experiences in. This allows the reader to see the world through his perspective, which helps change the mood of the text smoothly. For example, at the start, when Watney realised he was stranded on Mars without any help or support, he broke down and threw in the towel. This was portrayed through his pessimistic language and attitude towards the setting on Mars. While he was working to leave Mars, he had a motivational attitude and started to see things in a more optimistic way. Because of the approach to writing via a log, the reader is also able to track his daily activities, rather than listening to his story over time, like in other novels. Something else I liked was the humour integrated into the book. Mark Watney was described as a realistic, sarcastic, and funny person. Due to this, the atmosphere on Mars was just a tad bit lighter and kept the reader smiling, even during the times when Watney had to make impossible decisions and needed to reach unachievable goals to barely stay alive. A couple of times, he nearly botched all his hard work with the smallest mistakes, yet the jokes he made let him keep going and lifted the tone of the book. Another interesting aspect portrayed was the importance of human communication. Watney didn’t have anyone to talk to, so sometimes he just couldn’t stand it and wanted the whole thing to end, but the memory of his crew, the last people he had talked to, kept him going. Some lessons I learnt through this book were that you can find humour in dark times, that communication is essential for mental wellbeing, and to never give up. I would recommend this book to teens and adults, because of the language and complex ideas.</p>
+      </div>
+    </article>
+  </section>
+
+</main>
+
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lb-btn lb-close" type="button" aria-label="Close">×</button>
+  <button class="lb-btn lb-prev" type="button" aria-label="Previous photo">‹</button>
+  <img alt="">
+  <p></p>
+  <button class="lb-btn lb-next" type="button" aria-label="Next photo">›</button>
+</div>
+
+<footer>
+  <div class="wrap"><span>© 2026 Ridhaan Desai</span><span>Made with care, and cardboard.</span></div>
+</footer>
+
+<script>
+(function () {
+  var views = Array.prototype.slice.call(document.querySelectorAll('section[data-view]'));
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('nav a'));
+  var parent = { 'south-korea': 'travel', 'kerala': 'travel', 'german-boy': 'reading', 'make-your-bed': 'reading', 'the-martian': 'reading', 'tech-challenge': 'research' };
+  function show() {
+    var id = (location.hash || '#home').slice(1);
+    if (!views.some(function (v) { return v.dataset.view === id; })) id = 'home';
+    views.forEach(function (v) { v.hidden = v.dataset.view !== id; });
+    var active = parent[id] || id;
+    tabs.forEach(function (t) {
+      if (t.dataset.tab === active) t.setAttribute('aria-current', 'page');
+      else t.removeAttribute('aria-current');
+    });
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', show);
+  show();
+
+  // "Show all" buttons
+  Array.prototype.forEach.call(document.querySelectorAll('.more'), function (b) {
+    b.addEventListener('click', function () {
+      var g = b.previousElementSibling;
+      var open = g.classList.toggle('collapsed');
+      b.textContent = open ? b.dataset.label : 'Show fewer';
+    });
+  });
+
+  // Lightbox
+  var lb = document.getElementById('lightbox');
+  var lbImg = lb.querySelector('img');
+  var lbCap = lb.querySelector('p');
+  var set = [], idx = 0;
+  function open(list, i) { set = list; idx = i; render(); lb.hidden = false; }
+  function render() { var im = set[idx].querySelector('img'); lbImg.src = im.src; lbImg.alt = im.alt; lbCap.textContent = im.alt; }
+  function step(d) { idx = (idx + d + set.length) % set.length; render(); }
+  Array.prototype.forEach.call(document.querySelectorAll('.gallery'), function (g) {
+    var items = Array.prototype.slice.call(g.querySelectorAll('button'));
+    items.forEach(function (btn, i) { btn.addEventListener('click', function () { open(items, i); }); });
+  });
+  lb.querySelector('.lb-close').addEventListener('click', function () { lb.hidden = true; });
+  lb.querySelector('.lb-prev').addEventListener('click', function (e) { e.stopPropagation(); step(-1); });
+  lb.querySelector('.lb-next').addEventListener('click', function (e) { e.stopPropagation(); step(1); });
+  lb.addEventListener('click', function (e) { if (e.target === lb) lb.hidden = true; });
+  document.addEventListener('keydown', function (e) {
+    if (lb.hidden) return;
+    if (e.key === 'Escape') lb.hidden = true;
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
+  });
+})();
+</script>
+
+</body></html>
