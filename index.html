@@ -226,6 +226,8 @@ section[data-view="german-boy"], section[data-view="make-your-bed"], section[dat
 @media (max-width: 780px) { .featured { grid-template-columns: 1fr; } .gallery.captioned { grid-template-columns: repeat(2, minmax(0, 1fr)); } .gallery.captioned.collapsed button:nth-child(n+6) { display: grid; } .gallery.captioned.collapsed button:nth-child(n+7) { display: none; } }
 .hero-links { display: flex; flex-wrap: wrap; gap: 12px 28px; font: 400 0.85rem/1 var(--mono); }
 .hero-links a { color: var(--accent); text-underline-offset: 5px; }
+h1.name-caps { font-size: clamp(2.4rem, 5.5vw, 3.6rem); line-height: 1.12; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; }
+h1.name-caps::after { content: ""; display: block; width: 72px; height: 2px; margin-top: 22px; background: var(--accent); }
 .credit { font: 400 0.75rem/1.4 var(--mono); color: var(--muted); padding-top: 6px; }
 .press-links { display: flex; gap: 22px; flex-wrap: wrap; padding-top: 4px; }
 .press-links a { font: 600 1rem/1 var(--body); color: var(--accent); text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
@@ -301,7 +303,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
   <section data-view="home">
     <div class="hero">
       <div class="hero-text">
-        <h1><span class="first">Ridhaan</span><br>Desai</h1>
+        <h1 class="name-caps">Ridhaan<br>Desai</h1>
         <p>Neurons, knife skills and shutter speeds. I'm Ridhaan Desai, a high school student fascinated by how the brain turns electrical signals into thoughts, and how living systems keep themselves running. Most of my free time goes into watching and playing basketball, cooking, reading, and photography.</p>
         <nav class="hero-links" aria-label="Sections"><a href="#research">Research →</a><a href="#creations">Creations →</a><a href="#travel">Travel →</a><a href="#reading">Reading →</a></nav>
       </div>
